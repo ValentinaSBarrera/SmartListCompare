@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SmartListCompare"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <activity
+            android:name=".views.body.TuListaActivity"
+            android:theme="@style/Theme.SmartListCompare.NoActionBar"
+            android:exported="false" />
+        <activity
+            android:name=".views.body.ProductosSuperActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartListCompare.NoActionBar" />
+        <activity
+            android:name=".views.body.ProductoActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartListCompare.NoActionBar" />
+        <activity
+            android:name=".views.body.TipoActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartListCompare.NoActionBar" />
+        <activity
+            android:name=".views.body.SubcategoriaActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartListCompare.NoActionBar" />
+        <activity
+            android:name=".views.nav.PerfilActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartListCompare.NoActionBar" />
+        <activity android:name=".views.inicio.LoginActivity" />
+        <activity
+            android:name=".views.nav.HomeActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartListCompare.NoActionBar" />
+        <activity
+            android:name=".views.nav.BaseActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartListCompare.NoActionBar" />
+        <activity
+            android:name=".views.inicio.MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartListCompare.NoActionBar" />
+        <activity
+            android:name=".views.SplashScreen"
+            android:exported="true"
+            android:theme="@style/Theme.SmartListCompare.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

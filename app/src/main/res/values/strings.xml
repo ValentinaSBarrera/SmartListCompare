@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">SmartList Compare</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_inicio">InicioActivity</string>
+    <string name="nameapp">SmartList Compare</string>
+    <string name="slogan">¡Compara, ahorra, repite!</string>
+    <string name="bienvenida">Bienvenido a SmartList Compare</string>
+    <string name="developed">© Developed by Valsty Tech</string>
+    <string name="developedincio">Valsty Tech</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">lose</string>
+    <string name="nav_header_desc">UserIcon</string>
+    <string name="nav_header_user">User</string>
+    <string name="nav_header_email">val.sty2018@gmail.com</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_perfil">Mi Perfil</string>
+    <string name="menu_feedback">Feedback</string>
+    <string name="menu_logout">Logout</string>
+    <string name="title_home">Home</string>
+    <string name="title_supermercado">Supermercado</string>
+    <string name="title_tulista">Tú Lista</string>
+    <string name="bienvenida_user">Bienvenido/a, user!</string>
+</resources>
