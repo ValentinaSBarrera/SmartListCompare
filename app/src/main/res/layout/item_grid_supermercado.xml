@@ -14,8 +14,8 @@
     card_view:contentPadding="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="173dp"
-        android:layout_height="200dp">
+        android:layout_width="170dp"
+        android:layout_height="170dp">
 
         <TextView
             android:id="@+id/tvsupergrid"
@@ -29,23 +29,22 @@
             android:textColor="#000000"
             android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.878"
+            app:layout_constraintVertical_bias="0.876"
             card_view:layout_constraintBottom_toBottomOf="parent" />
 
         <ImageView
             android:id="@+id/ivsupergrid"
-            android:layout_width="167dp"
-            android:layout_height="74dp"
+            android:layout_width="146dp"
+            android:layout_height="70dp"
             android:layout_marginTop="16dp"
             app:layout_constraintBottom_toTopOf="@+id/tvsupergrid"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.47"
+            app:layout_constraintHorizontal_bias="0.481"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.318"
+            app:layout_constraintVertical_bias="0.479"
             card_view:srcCompat="@drawable/aceitunas" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

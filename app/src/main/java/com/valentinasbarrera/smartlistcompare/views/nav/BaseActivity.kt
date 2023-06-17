@@ -81,18 +81,19 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         toggle.syncState()
         sh = getSharedPreferences("usuario", MODE_PRIVATE)
+        // Obtener los datos de SharedPreferences
         val username = sh.getString("nombre_usuario", null)
         val email = sh.getString("email", null)
-
-
-        // Actualizar la información en el HeaderView
+        // Actualizar la información en el HeaderView con los datos de SharedPreferences
         val usernameTextView = navHeader.findViewById<TextView>(R.id.tvusername)
         val emailTextView = navHeader.findViewById<TextView>(R.id.tvuseremail)
         usernameTextView.text = username
         emailTextView.text = email
+
         navView.setNavigationItemSelectedListener(this)
         bottomNavView.setOnNavigationItemSelectedListener(this)
         tollbar.setNavigationIcon(R.drawable.ic_menu)
+
         setInitialActivity()
     }
 
@@ -121,7 +122,7 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 return true
             }
             R.id.nav_feedback -> {
-                val url = "https://www.google.com"
+                val url = "https://forms.gle/8zjg8mcgYoF2arXr7"
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                 startActivity(intent)
                 return true
@@ -162,10 +163,7 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
 
 
-    private fun inflateActivityLayout(layoutResId: Int) {
-        frameLayout.removeAllViews()
-        layoutInflater.inflate(layoutResId, frameLayout)
-    }
+
 
     private fun getCategorias() {
         viewModel.getAllCategorias().observe(this, Observer { it ->
@@ -225,7 +223,10 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         gvsuper.adapter = adapterSuper
         gvsuper.numColumns = 2
     }
-
+    private fun inflateActivityLayout(layoutResId: Int) {
+        frameLayout.removeAllViews()
+        layoutInflater.inflate(layoutResId, frameLayout)
+    }
     fun inflateSubcategoriaActivityLayout(layoutResId: Int) {
         frameLayout.removeAllViews()
         layoutInflater.inflate(layoutResId, frameLayout)
