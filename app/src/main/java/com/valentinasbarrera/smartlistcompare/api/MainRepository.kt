@@ -103,8 +103,8 @@ class MainRepository() {
 
 
     // update usuario
-    suspend fun updateUsuario(email:String, usuario: Usuario): Usuario? {
-        val webResponse = service.updateUsuario(email , usuario).await()
+    suspend fun updateUsuario(email:String): Usuario? {
+        val webResponse = service.updateUsuario(email).await()
         if (webResponse.isSuccessful) {
             return webResponse.body()!!.usuario
         }

@@ -97,8 +97,6 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         setInitialActivity()
     }
 
-
-
     override fun onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
@@ -128,10 +126,10 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 return true
             }
             R.id.nav_logout -> {
-                // Clear shared preferences
+
                 sh = getSharedPreferences("usuario", Context.MODE_PRIVATE)
                 sh.edit().clear().apply()
-                // Navigate to the login page (MainActivity)
+
                 val intent = Intent(this, MainActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
@@ -152,18 +150,17 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 return true
             }
             R.id.navigation_tulista -> {
+                Toast.makeText(this, "Funcionalidad en Proceso de Construcción", Toast.LENGTH_SHORT).show()
                 inflateActivityLayout(R.layout.activity_home)
-                Toast.makeText(this, "Funcionalidad en proceso de construccion", Toast.LENGTH_SHORT).show()
-                return true
+                gvcategorias = findViewById(R.id.gvCategorias)
+                initRV()
+                getCategorias()
+                bottomNavView.menu.getItem(0).isChecked = true
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
-
-
-
-
 
     private fun getCategorias() {
         viewModel.getAllCategorias().observe(this, Observer { it ->
@@ -226,6 +223,7 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     private fun inflateActivityLayout(layoutResId: Int) {
         frameLayout.removeAllViews()
         layoutInflater.inflate(layoutResId, frameLayout)
+        bottomNavView.menu.getItem(0).isChecked = true
     }
     fun inflateSubcategoriaActivityLayout(layoutResId: Int) {
         frameLayout.removeAllViews()

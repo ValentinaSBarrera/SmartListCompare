@@ -73,11 +73,10 @@ interface SmartListService {
 // actualizar usuario
     @PUT("usuario/{email}")
     fun updateUsuario(
-        @Path("email") email: String,
-        @Body usuario: Usuario): Deferred<Response<Respuesta>>
+        @Path("email") email: String): Deferred<Response<Respuesta>>
 
     //Metodos DELETE
-// borrar usuario
+    // borrar usuario
     @DELETE("usuario/{email}")
     fun deleteUsuario(
         @Path("email") email: String): Deferred<Response<Respuesta>>

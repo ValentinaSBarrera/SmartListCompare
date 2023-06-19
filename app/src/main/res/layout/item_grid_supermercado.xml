@@ -19,7 +19,7 @@
 
         <TextView
             android:id="@+id/tvsupergrid"
-            android:layout_width="167dp"
+            android:layout_width="146dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/architects_daughter"

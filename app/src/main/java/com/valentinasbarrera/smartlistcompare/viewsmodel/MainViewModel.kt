@@ -129,5 +129,11 @@ class MainViewModel : ViewModel() {
         return productoListaCompraresponse
     }
 
-
+    fun updateUser(email: String): MutableLiveData<Usuario?> {
+        val usuarioresponse = MutableLiveData<Usuario?>()
+        GlobalScope.launch(Main){
+            usuarioresponse.value = repository.updateUsuario(email)
+        }
+        return usuarioresponse
+    }
 }

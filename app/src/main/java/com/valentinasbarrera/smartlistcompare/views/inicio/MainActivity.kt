@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.EditText
 import com.google.android.material.tabs.TabLayout
@@ -13,10 +12,8 @@ import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.google.gson.Gson
 import com.valentinasbarrera.smartlistcompare.R
 import com.valentinasbarrera.smartlistcompare.model.Usuario
-import com.valentinasbarrera.smartlistcompare.model.UsuarioView
 import com.valentinasbarrera.smartlistcompare.views.nav.BaseActivity
 import com.valentinasbarrera.smartlistcompare.viewsmodel.MainViewModel
 
@@ -89,7 +86,6 @@ open class MainActivity : AppCompatActivity() {
         val isLoggedIn = sharedPreferences.getBoolean(PREF_LOGGED_IN, false)
         if (isLoggedIn && id != 0 && nombre_usuario != null && email != null && contrasena != null) {
             usuario = Usuario(id, nombre_usuario, email, contrasena)
-            showToast("Welcome ${usuario!!.nombre_usuario}")
         }
     }
 
@@ -118,28 +114,6 @@ open class MainActivity : AppCompatActivity() {
 
     }
 
-    /*private fun loginUser(email: String, contrasena: String) {
-        if (email.isEmpty() || contrasena.isEmpty()) {
-            showToast("Por favor, completa todos los campos")
-            return
-        }
-        viewModel.getUserByEmailAndPass(email,contrasena).observe(this, Observer { it ->
-            if (it==null) {
-               showToast("Usuario no encontrado")
-            }
-            else {
-                this.usuario = it
-                saveUserToSharedPreferences(it)
-                showToast("Login OK....")
-            }
-        })
-        val intent = Intent(this, BaseActivity::class.java)
-        intent.putExtra("usuario", usuario)
-        startActivity(intent)
-        getUserSH()
-    }*/
-
-
     private fun registerUser(email: String, nombre_usuario: String, contrasena: String) {
         if (email.isEmpty() || nombre_usuario.isEmpty() || contrasena.isEmpty()) {
             showToast("Por favor, completa todos los campos")
@@ -149,7 +123,7 @@ open class MainActivity : AppCompatActivity() {
                 it?.let { usuarioRegistrado ->
                     saveUserToSharedPreferencesRegister(usuarioRegistrado)
 
-                    showToast("${usuarioRegistrado.nombre_usuario} registrado correctamente")
+                    showToast("Te has registrado correctamente")
 
                     val intent = Intent(this, BaseActivity::class.java)
                     intent.putExtra("usuario", usuarioRegistrado)
@@ -165,21 +139,24 @@ open class MainActivity : AppCompatActivity() {
         val passwordEditText = findViewById<EditText>(R.id.password)
         val email = emailEditText.text.toString()
         val contrasena = passwordEditText.text.toString()
-        loginregister(email, contrasena)
 
-
+        if (email.isEmpty() || contrasena.isEmpty()) {
+            showToast("Por favor, completa todos los campos")
+        } else {
+            loginuser(email, contrasena)
+        }
     }
-    private fun loginregister(email: String, contrasena: String) {
+    private fun loginuser(email: String, contrasena: String) {
         viewModel.getUserByEmailAndPass(email,contrasena).observe(this, Observer { it ->
             if (it == null) {
-                showToast("Usuario no encontrado")
+                showToast("Usuario no encontrado, debe registrarse")
                 inflateActivityLayout(R.layout.activity_register)
                 tabLayout.getTabAt(1)?.select()
             }
             else {
                 usuario = it
                 saveUserToSharedPreferences()
-                showToast("Login OK....")
+                showToast("Bienvenido ${usuario!!.nombre_usuario}")
                 val intent = Intent(this, BaseActivity::class.java)
                 intent.putExtra("usuario", usuario)
                 startActivity(intent)
@@ -195,8 +172,10 @@ open class MainActivity : AppCompatActivity() {
         val nombre_usuario = usernameEditText.text.toString()
         val contrasena = passwordEditText.text.toString()
 
-        registerUser(email, nombre_usuario, contrasena)
-
-
+        if (email.isEmpty() || nombre_usuario.isEmpty() || contrasena.isEmpty()) {
+            showToast("Por favor, completa todos los campos")
+        } else {
+            registerUser(email, nombre_usuario, contrasena)
+        }
     }
 }
